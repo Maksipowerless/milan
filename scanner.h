@@ -10,7 +10,7 @@ using namespace std;
 enum Token {
 	T_EOF,			// Конец текстового потока
 	T_ILLEGAL,		// Признак недопустимого символа
-	T_IDENTIFIER,		// Идентификатор
+    T_IDENTIFIER,   // Идентификатор
 	T_NUMBER,		// Целочисленный литерал
 	T_BEGIN,		// Ключевое слово "begin"
 	T_END,			// Ключевое слово "end"
@@ -29,7 +29,8 @@ enum Token {
 	T_CMP,			// Сводная лексема для операторов отношения
 	T_LPAREN,		// Открывающая скобка
 	T_RPAREN,		// Закрывающая скобка
-	T_SEMICOLON		// ";"
+    T_SEMICOLON,	// ";"
+    T_ENUM          // Ключевое слово "enum"
 };
 
 // Функция tokenToString возвращает описание лексемы.
@@ -60,7 +61,7 @@ class Scanner
 {
 public:
 	// Конструктор. В качестве аргумента принимает имя файла и поток,
-        // из которого будут читаться символы транслируемой программы.
+    // из которого будут читаться символы транслируемой программы.
 
 	explicit Scanner(const string& fileName, istream& input)
 		: fileName_(fileName), lineNumber_(1), input_(input)
@@ -76,6 +77,7 @@ public:
 		keywords_["od"] = T_OD;
 		keywords_["write"] = T_WRITE;
 		keywords_["read"] = T_READ;
+        keywords_["enum"] = T_ENUM;
 
 		nextChar();
 	}

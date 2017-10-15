@@ -83,7 +83,7 @@ void Command::print(int address, ostream& os)
 		case PRINT:
 			os << "PRINT";
 			break;
-	}
+    }
 
 	os << endl;
 }
